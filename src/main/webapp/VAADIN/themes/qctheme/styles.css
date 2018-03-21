@@ -15052,3 +15052,11 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.qctheme .CustomLogo {
+	color: #000;
+}
+
+.qctheme .customButton {
+	color: #000;
+}
