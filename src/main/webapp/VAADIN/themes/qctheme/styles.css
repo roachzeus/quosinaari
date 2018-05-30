@@ -15053,6 +15053,10 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
+.qctheme #mainPage {
+	background-color: #000;
+}
+
 .qctheme .CustomLogo {
 	color: #000;
 }

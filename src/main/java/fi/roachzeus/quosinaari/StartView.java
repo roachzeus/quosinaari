@@ -10,26 +10,38 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+
+import fi.roachzeus.quosinaari.utils.QuosiUtils;
+
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
+import redis.clients.jedis.Jedis;
+
 public class StartView extends CssLayout implements View {
 	
+	private static final long serialVersionUID = 1153823238547034151L;
 	private Navigator n;
+	private String playerId;
 	
     public StartView() {
+    	
         setSizeFull();
-
         n = UI.getCurrent().getNavigator();
-        
         this.setId("mainPage");
+        playerId = UI.getCurrent().getSession().getSession().getId();
 
         final Button hButton = new Button("Host");
         hButton.addStyleName("customButton");
         hButton.addClickListener(e -> {
-        	n.navigateTo("host");
+        	
+        	// check if host exists in redis. only one host allowed. check against sessionID.
+        	if(QuosiUtils.isAllowedHost(playerId)){
+            	n.navigateTo("host");
+            }
+        	
             
         });
         
