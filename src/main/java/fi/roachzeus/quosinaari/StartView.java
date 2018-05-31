@@ -29,9 +29,12 @@ public class StartView extends CssLayout implements View {
     public StartView() {
     	
         setSizeFull();
+        
         n = UI.getCurrent().getNavigator();
         this.setId("mainPage");
         playerId = UI.getCurrent().getSession().getSession().getId();
+        
+        //UI.getCurrent().getSession().getAttribute("");
 
         final Button hButton = new Button("Host");
         hButton.addStyleName("customButton");

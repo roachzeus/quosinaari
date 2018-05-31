@@ -15064,3 +15064,17 @@ div.v-layout.v-horizontal.v-widget {
 .qctheme .customButton {
 	color: #000;
 }
+
+.qctheme .qForm, .qctheme .qRegister {
+	margin: 1%;
+}
+
+.qctheme .qLabel {
+	background-color: #fff;
+	width: 100%;
+}
+
+.qctheme .qLabel.tapped {
+	background-color: #888;
+	color: #000;
+}

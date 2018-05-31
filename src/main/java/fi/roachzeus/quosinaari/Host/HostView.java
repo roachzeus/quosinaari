@@ -34,19 +34,7 @@ public class HostView extends CssLayout implements View{
 		j.set("host", playerId);
 		j.close();
 		
-		Button button = new Button("Go to PlayerView",
-                new Button.ClickListener() {
-			
-				private static final long serialVersionUID = 1L;
-
-			@Override
-            public void buttonClick(ClickEvent event) {
-                
-				n.navigateTo("player");
-            }
-
-			
-        });
+		
 		
 		Button testRedis = new Button("Get data", new Button.ClickListener() {
 			private static final long serialVersionUID = 1L;
@@ -71,7 +59,6 @@ public class HostView extends CssLayout implements View{
 		
 		
 		addComponent(testRedis);
-        addComponent(button);
         //setComponentAlignment(button, Alignment.MIDDLE_CENTER);
     }
 

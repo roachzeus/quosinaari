@@ -46,4 +46,17 @@
   .customButton{
   	color: #000;
   }
+  
+  .qForm, .qRegister {
+  	margin: 1%;
+  }
+  .qLabel {
+    background-color: #fff;
+    width: 100%;
+
+  }
+  .qLabel.tapped {
+  	background-color: #888;
+  	color: #000;
+  }
 }
