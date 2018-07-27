@@ -9,6 +9,8 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
+import redis.clients.jedis.Jedis;
+
 public class FormComponent extends CustomComponent{
 
 	private static final long serialVersionUID = 2049937040068696255L;
@@ -23,6 +25,8 @@ public class FormComponent extends CustomComponent{
 	
 	
 	public FormComponent(){
+		
+		Jedis j = new Jedis("localhost");
 		
 		this.addStyleName("qForm");
 		panel = new Panel("Kysymys");
@@ -67,9 +71,10 @@ public class FormComponent extends CustomComponent{
 		d.addClickListener(e -> this.tap(e));
         d.setStyleName("selectBtn");
 		
-		ok = new Button("OKbtn");
+		ok = new Button("V A L M I S !");
 		ok.addClickListener(e -> this.submit());
 		ok.setEnabled(false);
+		ok.setWidth("100%");
 		
 		panelContent.addComponent(clear);
 		panelContent.addComponent(start);
@@ -153,6 +158,8 @@ public class FormComponent extends CustomComponent{
 		ok.setEnabled(false);
 		System.out.println("Time: "  + String.format("%.2f", (endTime-startTime)/1000.00d));
 		
+		// TODO: submit to redis
+		
 		
 		
 	}
@@ -164,6 +171,7 @@ public class FormComponent extends CustomComponent{
 	}
 	private ArrayList<String> getQuestionData(){
 		
+		// TODO: this should come from redis
 		ArrayList<String> list = new ArrayList<String>();
 		
 		list.add("Laita seuraavat asiat järjestykseen.");

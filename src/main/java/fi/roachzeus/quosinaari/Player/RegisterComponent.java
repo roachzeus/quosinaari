@@ -5,7 +5,11 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
+import redis.clients.jedis.Jedis;
+
 import com.vaadin.ui.Button.ClickEvent;
 
 public class RegisterComponent extends CustomComponent {
@@ -16,6 +20,7 @@ public class RegisterComponent extends CustomComponent {
 	private Button start;
 	private VerticalLayout panelContent;
 	private Panel panel;
+	private boolean registerOK = false;
 	
 	public RegisterComponent(){
 		
@@ -28,21 +33,8 @@ public class RegisterComponent extends CustomComponent {
 		name = new TextField();
         
         // move logic to model/presenter
-        start = new Button("Ilmoittaudu",
-        		
-        		new Button.ClickListener() {
-			
-			private static final long serialVersionUID = 1L;
-
-		@Override
-        public void buttonClick(ClickEvent event) {
-            
-			if(name.getValue().toString().length() < 1){ 
-				System.out.println("Name is empty.");
-				return;
-			}
-        }
-        });
+        start = new Button("Ilmoittaudu");
+        start.addClickListener(event -> BtnClick());
        
         panelContent.addComponent(nameLabel);
         panelContent.addComponent(name);
@@ -56,5 +48,29 @@ public class RegisterComponent extends CustomComponent {
         setSizeUndefined();
 	}
 	
+	private void BtnClick(){
+		if(name.getValue().toString().length() < 1){ 
+			System.out.println("Name is empty.");
+			return;
+		}
+		Jedis j = new Jedis(PlayerView.REDIS_HOST);
+		
+		j.clientSetname("player");
+		
+		j.hset(UI.getCurrent().getSession().getSession().getId(), "plrName", name.getValue().toString());
+		System.out.println(name.getValue().toString());
+		
+		if(j.hget(UI.getCurrent().getSession().getSession().getId(), "plrName").equals(name.getValue().toString())){
+			registerOK = true;
+			this.setVisible(false);
+			
+
+		}
+		j.close();
+		
+	}
+	public boolean registerOk(){
+		return registerOK;
+	}
 
 }
