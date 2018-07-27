@@ -27,33 +27,45 @@ public class FormComponent extends CustomComponent{
 		this.addStyleName("qForm");
 		panel = new Panel("Kysymys");
         VerticalLayout panelContent = new VerticalLayout();
+        panelContent.setStyleName("qFormInner");
+        panelContent.setWidth("100%");
         panel.setContent(panelContent);
         
         clear = new Button("Clear");
         clear.addClickListener(e -> this.clear());
+        clear.setWidth("40%");
+        clear.setStyleName("margin5");
         
         start = new Button("Start");
         start.addClickListener(e -> this.start());
+        start.setWidth("40%");
+        start.setStyleName("margin5");
         
         data = this.getQuestionData();
         
 		question = new Label(data.get(0));
+		question.setStyleName("question");
 		
-		a = new Button("A: ");
+		
+		a = new Button("A: " + data.get(1));
 		a.setStyleName("qLabel");
 		a.addClickListener(e -> this.tap(e));
+        a.setStyleName("selectBtn");
 		
-		b = new Button("B: ");
+		b = new Button("B: " + data.get(2));
 		b.setStyleName("qLabel");
 		b.addClickListener(e -> this.tap(e));
+        b.setStyleName("selectBtn");
 		
-		c = new Button("C: ");
+		c = new Button("C: " + data.get(2));
 		c.setStyleName("qLabel");
 		c.addClickListener(e -> this.tap(e));
+        c.setStyleName("selectBtn");
 		
-		d = new Button("D: ");
+		d = new Button("D: " + data.get(3));
 		d.setStyleName("qLabel");
 		d.addClickListener(e -> this.tap(e));
+        d.setStyleName("selectBtn");
 		
 		ok = new Button("OKbtn");
 		ok.addClickListener(e -> this.submit());

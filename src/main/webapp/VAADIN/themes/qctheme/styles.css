@@ -15078,3 +15078,53 @@ div.v-layout.v-horizontal.v-widget {
 	background-color: #888;
 	color: #000;
 }
+
+html {
+	background-color: #000;
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+.qForm {
+	width: 98%;
+}
+
+.qForm > div {
+	width: 100%;
+}
+
+.qForm .qFormInner {
+	width: 100%;
+}
+
+.qForm .question {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 20px;
+}
+
+.qForm .selectBtn {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 20px;
+}
+
+.qForm .v-spacing {
+	clear: none;
+	display: none;
+}
+
+.qForm .margin5 {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.qForm .v-slot-selectBtn {
+	width: 50%;
+	margin-left: 0;
+	margin-right: 0;
+	float: left;
+	clear: none;
+}

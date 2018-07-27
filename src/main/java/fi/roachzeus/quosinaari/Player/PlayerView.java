@@ -22,8 +22,8 @@ public class PlayerView extends CssLayout implements View{
 	public PlayerView(){
 		
 		//this.setSizeFull();
-		this.setWidth("95%");
-		this.setHeight("95%");
+		this.setWidth("100%");
+		this.setHeight("100%");
 		n = UI.getCurrent().getNavigator();
 		playerId = UI.getCurrent().getSession().getSession().getId();
 		h1 = new Label("Quosinaari");
